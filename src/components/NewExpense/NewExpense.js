@@ -4,7 +4,7 @@ import { useState } from 'react';
 const NewExpense = (props) => {
     const [isFormVisible, setIsFormVisible] = useState(false);
 
-    const saveExpenseDataHandler = (enteredExpenseData) => {
+    const expenseDataSaveHandler = (enteredExpenseData) => {
         const expenseData = {
             ...enteredExpenseData,
             id: Math.random().toString()
@@ -13,10 +13,10 @@ const NewExpense = (props) => {
         setIsFormVisible(false);
     }
 
-    const AddNewExpenseHandler = () => {
+    const ExpenseAddHandler = () => {
         setIsFormVisible(true);
     }
-    const CancelFormHandler = () => {
+    const FormCancelHandler = () => {
         setIsFormVisible(false);
     }
 
@@ -24,11 +24,11 @@ const NewExpense = (props) => {
         <div className="new-expense">
             {
                 isFormVisible === false &&
-                (<button onClick={AddNewExpenseHandler}>Add new Expense</button>)
+                (<button onClick={ExpenseAddHandler}>Add new Expense</button>)
             }
             {
                 isFormVisible === true &&
-                (<ExpenseForm onSaveExpenseData={saveExpenseDataHandler} onCancel={CancelFormHandler} />)
+                (<ExpenseForm onExpenseDataSave={expenseDataSaveHandler} onFormCancel={FormCancelHandler} />)
             }
         </div>
     )
